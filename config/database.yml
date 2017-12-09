@@ -1,0 +1,31 @@
+development:
+  adapter: postgresql
+  encoding: utf-8  
+  database: reabilitation_development
+  pool: 5
+  timeout: 5000
+  username: rails
+  password: (Lorr8
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: postgresql
+  encoding: utf-8  
+  database: reabilitation_test
+  pool: 5
+  timeout: 5000
+  username: rails
+  password: (Lorr8
+
+production:
+  adapter: postgresql
+  encoding: utf-8
+  database: reabilitation_prodaction
+  host: localhost
+  pool: 5
+  timeout: 5000
+  username: rails
+  password: (Lorr8
+
