@@ -3,17 +3,19 @@ after_validation :limit_date, on: :create
 
 private
   def limit_date
-    @date = Licencekey.where(:key => self.key)
-    if @date.size > 0
-       if (@date.first.deadline)
-          @limitdate = @date.first.deadline
+    @licence = Licencekey.where(:key => self.key)
+    if @licence.size > 0
+       if (@licence.first.deadline)
+          @limitdate = @licence.first.deadline
+       elseif (@licence.first.creation)
+	  @limitdate = @licence.first.creation + 1.years + 1.months
        else
-          @limitdate = @date.first.created_at + 1.years + 1.months
+          @limitdate = @licence.first.created_at + 1.years + 1.months
        end
        if (self.endtime > @limitdate)
           self.endtime = @limitdate
        end
-       @date.first.update(deadline: self.endtime)
+       @licence.first.update(deadline: self.endtime)
     end
   end
 end
